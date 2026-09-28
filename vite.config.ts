@@ -55,9 +55,9 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/s3/, '/static'),
       },
       // Strapi 本地上传的媒体（头像等，local provider 返回 /uploads/... 相对
-      // URL）走同源代理，浏览器无需直连 1337（部分环境无法直达后端端口）。
+      // URL）走同源代理，浏览器无需直连后端（部分环境无法直达后端端口）。
       '/uploads': {
-        target: 'http://localhost:1337',
+        target: 'http://192.168.101.90:1339',
         changeOrigin: true,
       },
     },
