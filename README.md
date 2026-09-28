@@ -53,7 +53,7 @@ pnpm dev        # http://localhost:3003
 | `VITE_DATA_SOURCE` | `json`＝只读发布产物（默认） |
 | `VITE_PUBLISH_BASE` | 浏览器端读取发布数据的基路径（默认 `/sites`） |
 | `VITE_DEV_SITE_CODE` / `VITE_SITE_CODE` | 本地无域名映射时的站点码覆盖（`global`） |
-| `PUBLISHED_ORIGIN` | 生产发布产物源（S3 `/static` 基地址，服务端读取） |
+| `PUBLISHED_ORIGIN` | 生产发布产物源（S3 `/static` 基地址，服务端读取，见 docs/CONFIG.md） |
 | `PORT` | 生产启动端口（默认 3003） |
 
 ## 常用命令
