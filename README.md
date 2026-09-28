@@ -35,12 +35,16 @@ pnpm dev        # http://localhost:3003
 
 站点内容依赖 prd-admin 至少发布一次（否则所有路径 404）：
 
-1. prd-admin 环境设置 `TMS_WEB_DIR=/Users/fansc/onecms/prd-web`，
-   发布产物即镜像进本仓库，dev server 立即可见。
+1. prd-admin 环境已配置 `TMS_WEB_DIR=/Users/fansc/onecms/prd-web`（2026-09-28
+   起生效），发布产物即镜像进本仓库，dev server 立即可见。`global` 子站
+   承接官网内容（系统介绍 / 产品展示页面均在 prd-admin 的 global 站点维护）。
 2. 在 prd-admin 维护 `global` 站点的页面与导航后发布；不要在本仓库改内容。
 3. 生产设置 `PUBLISHED_ORIGIN`（S3 `/static` 基地址），远端发布为准。
 4. 站点 `domain`（sites.json）决定 canonical/OG URL，在 prd-admin 站点记录
    里配置，不要改前端代码。
+5. 渲染器资产（`public/cdn/` + `src/generated/tms-cdn-assets.ts`）由
+   `prd-admin/scripts/sync-tms-web-assets.mjs` 在发布时同步；当前版本
+   `bdbc1dfcc042f488`（2026-09-28 手动同步）。
 
 ### 环境变量
 
