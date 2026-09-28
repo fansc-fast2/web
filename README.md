@@ -1,0 +1,68 @@
+# prd-web — OneCMS 官网基座
+
+OneCMS CMS SaaS 官网的**纯渲染基座**（TanStack Start / React 19 / Vite，
+SSR）：只做一件事——把 `prd-admin`（页面构建器）推送过来的已发布 HTML
+片段渲染成站点。页面、导航、区块、主题、SEO 全部来自发布产物，本仓库
+不含任何业务逻辑与页面内容。
+
+## 渲染什么
+
+```
+prd-admin 发布
+  ├─ 开发：镜像到本仓库 public/sites/{siteCode}/…（TMS_WEB_DIR 指向本仓库）
+  └─ 生产：上传 S3 /static/{siteCode}/…（PUBLISHED_ORIGIN）
+
+prd-web（本仓库，只读）
+  └─ 按 URL 定位 {siteCode}/{locale}/data/pages.json 里的 fragment →
+     SSR 输出片段 HTML，客户端激活其内联脚本（轮播/下拉/语言切换）
+```
+
+- 站点码 `global`（`src/server/published-page.ts` 的 `storefrontSiteCode`）。
+- 双语由 URL 前缀驱动：`/`＝英文、`/zh-CN`＝中文，中文缺页回退英文片段。
+- 版本预览：`/r/<releaseId>/<locale>/…` 渲染未上线 release（canonical 指向
+  生产路径，不会被索引）。
+- 区块渲染器 `blocks-renderer.js` 与主题 `published.css` 同为发布产物：
+  开发取 `public/cdn/`，生产经 `/s3/{siteCode}/` 同源代理读 S3。
+- `public/sites/`、`public/cdn/`、`src/routeTree.gen.ts` 均不入库——它们是
+  admin 推送的本地镜像缓存。
+
+## 本地开发
+
+```bash
+pnpm install
+pnpm dev        # http://localhost:3003
+```
+
+站点内容依赖 prd-admin 至少发布一次（否则所有路径 404）：
+
+1. prd-admin 环境设置 `TMS_WEB_DIR=/Users/fansc/onecms/prd-web`，
+   发布产物即镜像进本仓库，dev server 立即可见。
+2. 在 prd-admin 维护 `global` 站点的页面与导航后发布；不要在本仓库改内容。
+3. 生产设置 `PUBLISHED_ORIGIN`（S3 `/static` 基地址），远端发布为准。
+4. 站点 `domain`（sites.json）决定 canonical/OG URL，在 prd-admin 站点记录
+   里配置，不要改前端代码。
+
+### 环境变量
+
+| 变量 | 说明 |
+| --- | --- |
+| `VITE_DATA_SOURCE` | `json`＝只读发布产物（默认） |
+| `VITE_PUBLISH_BASE` | 浏览器端读取发布数据的基路径（默认 `/sites`） |
+| `VITE_DEV_SITE_CODE` / `VITE_SITE_CODE` | 本地无域名映射时的站点码覆盖（`global`） |
+| `PUBLISHED_ORIGIN` | 生产发布产物源（S3 `/static` 基地址，服务端读取） |
+| `PORT` | 生产启动端口（默认 3003） |
+
+## 常用命令
+
+- `pnpm dev` — 开发服务器
+- `pnpm build` / `pnpm start` — 构建与生产启动（`server-entry.js`）
+- `pnpm lint` — 类型检查 + ESLint
+- `pnpm check:architecture` — 边界检查（不得重新引入发布入口）
+- `pnpm test` — Vitest
+- `pnpm check:quality` — lint + 架构 + 测试 + 构建
+
+## 边界
+
+- 本仓库**只读**发布产物：不发布、不管理内容（发布属 prd-admin）。
+- 除渲染发布片段外不提供任何动态端点；需要表单/转化能力时，由
+  prd-admin 的区块与后端提供，或在本仓库按需重新引入。

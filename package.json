@@ -1,0 +1,52 @@
+{
+  "name": "prd-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "secrets:encrypt": "bash scripts/sops-env.sh encrypt",
+    "secrets:decrypt": "bash scripts/sops-env.sh decrypt",
+    "secrets:edit": "bash scripts/sops-env.sh edit",
+    "secrets:verify": "bash scripts/sops-env.sh verify",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "start": "node server-entry.js",
+    "lint": "pnpm lint:types && pnpm lint:code",
+    "lint:types": "tsc --noEmit",
+    "lint:code": "eslint . --max-warnings 322",
+    "check:architecture": "node scripts/check-architecture.mjs",
+    "test": "vitest run",
+    "check:quality": "pnpm lint && pnpm check:architecture && pnpm test && pnpm build"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "^1.170.10",
+    "@tanstack/react-start": "^1.168.18",
+    "@vitejs/plugin-react": "^4.7.0",
+    "animate.css": "^4.1.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "srvx": "^0.12.5",
+    "swiper": "11",
+    "vite": "^7.3.5",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9",
+    "@types/node": "^22.20.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9",
+    "globals": "^16",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5",
+    "typescript-eslint": "^8",
+    "vitest": "^4.1.7"
+  },
+  "packageManager": "pnpm@10.3.0+sha512.ee592eda8815a8a293c206bb0917c4bb0ff274c50def7cbc17be05ec641fc2d1b02490ce660061356bd0d126a4d7eb2ec8830e6959fb8a447571c631d5a2442d",
+  "engines": {
+    "node": "22.x"
+  }
+}
