@@ -146,15 +146,20 @@ function serveStatic(urlPath, search, req, res) {
   return false;
 }
 
-const S3_ORIGIN = 'https://tms-static-web.s3.us-east-1.amazonaws.com';
+// Published-storage origin (full base incl. path prefix, e.g.
+// https://<bucket>.cos.<region>.myqcloud.com/static). Provider-agnostic:
+// Tencent COS / AWS S3 / any CDN fronting the bucket. Unset = no proxying
+// (local-only run; PUBLISHED_ORIGIN also drives the server-side reads).
+const PUBLISHED_PROXY_BASE = (process.env.PUBLISHED_ORIGIN || '').replace(/\/+$/, '');
 
 // Same-origin proxy for published assets (published.css / blocks-renderer.js /
-// site data) living on S3 — avoids CORS since S3 has no CORS headers and keeps
-// the storefront URLs origin-relative in both dev (vite proxy) and production.
-// `prefix` is the storefront path segment stripped before /static ('/s3' for
-// CDN assets, '/sites' for published site data).
+// site data) living in object storage — avoids CORS (buckets serve no CORS
+// headers) and keeps the storefront URLs origin-relative.
+// `prefix` is the storefront path segment stripped before the base
+// ('/s3' for CDN assets, '/sites' for published site data).
 function proxyS3(req, res, url, prefix) {
-  const target = `${S3_ORIGIN}/static${url.pathname.slice(prefix.length)}${url.search}`;
+  if (!PUBLISHED_PROXY_BASE) { res.writeHead(503); res.end('Published origin not configured'); return; }
+  const target = `${PUBLISHED_PROXY_BASE}${url.pathname.slice(prefix.length)}${url.search}`;
   fetch(target, { method: req.method, headers: { Accept: req.headers.accept || '*/*' } })
     .then(async (upstream) => {
       const contentType = upstream.headers.get('content-type') || 'application/octet-stream';
@@ -200,7 +205,7 @@ const httpServer = createServer((req, res) => {
   //    mirror when one was built in (local prod runs synced by tms-admin).
   if (serveStatic(url.pathname, url.search, req, res)) return;
 
-  // 2. Proxy /s3/* to the published S3 bucket (same-origin, CORS-free).
+  // 2. Proxy /s3/* to the published-storage origin (same-origin, CORS-free).
   if (url.pathname.startsWith('/s3/')) { proxyS3(req, res, url, '/s3'); return; }
 
   // 2b. /sites/* falls through to the S3 proxy when no local static copy

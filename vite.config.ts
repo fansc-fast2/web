@@ -44,16 +44,21 @@ export default defineConfig({
     // Listen on both IPv4 and IPv6 loopback so Chromium/Playwright (which
     // default to IPv4 in some environments) can reach the dev server.
     host: true,
-    // Proxy published-data fetches to S3 so the browser stays same-origin
-    // (avoids CORS — S3 has no Access-Control-Allow-Origin header).
-    // VITE_PUBLISH_BASE=/s3 in .env.local; rewritten to /static on S3.
     proxy: {
-      '/s3': {
-        target: 'https://tms-static-web.s3.us-east-1.amazonaws.com',
-        changeOrigin: true,
-        secure: true,
-        rewrite: (path) => path.replace(/^\/s3/, '/static'),
-      },
+      // Proxy published-data fetches to the object-storage origin so the browser
+      // stays same-origin (buckets serve no CORS headers). Enabled only when
+      // PUBLISHED_ORIGIN is set (full base incl. path prefix, e.g.
+      // https://<bucket>.cos.<region>.myqcloud.com/static); /s3/* maps onto it.
+      ...(process.env.PUBLISHED_ORIGIN
+        ? {
+            '/s3': {
+              target: process.env.PUBLISHED_ORIGIN.replace(/\/+$/, ''),
+              changeOrigin: true,
+              secure: true,
+              rewrite: (p: string) => p.replace(/^\/s3/, ''),
+            },
+          }
+        : {}),
       // Strapi 本地上传的媒体（头像等，local provider 返回 /uploads/... 相对
       // URL）走同源代理，浏览器无需直连后端（部分环境无法直达后端端口）。
       '/uploads': {

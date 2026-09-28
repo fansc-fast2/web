@@ -6,6 +6,10 @@ import { PUBLIC_CONTENT_SECURITY_POLICY } from '../lib/security-policy'
 import { TMS_CDN_ASSET_VERSION } from '../generated/tms-cdn-assets'
 import '../styles/globals.css'
 
+// Absolute origin (scheme://host, no path) of the published-storage/CDN domain,
+// e.g. https://<bucket>.cos.<region>.myqcloud.com — optional, build-time.
+const PUBLISHED_ASSET_ORIGIN = (import.meta.env.VITE_PUBLISHED_PUBLIC_ORIGIN as string | undefined)?.replace(/\/+$/, '')
+
 export const Route = createRootRoute({
   component: RootComponent,
   // root 级错误/未找到会整体替换 <html> 渲染——必须自带完整文档结构,
@@ -28,8 +32,15 @@ function RootComponent() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta httpEquiv="Content-Security-Policy" content={PUBLIC_CONTENT_SECURITY_POLICY} />
-        <link rel="preconnect" href="https://tms-static-web.s3.us-east-1.amazonaws.com" crossOrigin="" />
-        <link rel="dns-prefetch" href="//tms-static-web.s3.us-east-1.amazonaws.com" />
+        {/* Published fragments reference absolute asset URLs on the storage
+            origin (Tencent COS / CDN). Preconnect only when that origin is
+            exposed at build time; unset = skip, links still resolve lazily. */}
+        {PUBLISHED_ASSET_ORIGIN && (
+          <>
+            <link rel="preconnect" href={PUBLISHED_ASSET_ORIGIN} crossOrigin="" />
+            <link rel="dns-prefetch" href={`//${PUBLISHED_ASSET_ORIGIN.replace(/^https?:\/\//, '')}`} />
+          </>
+        )}
         {/* Runs synchronously before first paint: bounces bare paths to /zh-CN
             when the visitor previously chose Chinese (locale is URL-derived,
             so without this the language choice evaporates on the next click). */}
