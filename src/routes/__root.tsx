@@ -45,9 +45,16 @@ function RootComponent() {
             when the visitor previously chose Chinese (locale is URL-derived,
             so without this the language choice evaporates on the next click). */}
         <script dangerouslySetInnerHTML={{ __html: LOCALE_PREFERENCE_BOOT_SCRIPT }} />
+        {/* Published CSS: same-origin proxy path by default (node 部署经
+            server-entry /s3 代理);Vercel 等无代理运行时用 VITE_PUBLISHED_CSS_URL
+            指向 CDN 绝对地址(完整含文件名)。 */}
         <link
           rel="stylesheet"
-          href={`${import.meta.env.DEV ? '/cdn' : '/s3/global'}/published.css?v=${TMS_CDN_ASSET_VERSION}`}
+          href={
+            import.meta.env.VITE_PUBLISHED_CSS_URL
+              ? `${String(import.meta.env.VITE_PUBLISHED_CSS_URL).replace(/\/+$/, '')}?v=${TMS_CDN_ASSET_VERSION}`
+              : `${import.meta.env.DEV ? '/cdn' : '/s3/global'}/published.css?v=${TMS_CDN_ASSET_VERSION}`
+          }
           data-published-css="1"
         />
         <HeadContent />

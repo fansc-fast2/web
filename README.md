@@ -51,7 +51,6 @@ pnpm dev        # http://localhost:3003
 | 变量 | 说明 |
 | --- | --- |
 | `VITE_DATA_SOURCE` | `json`＝只读发布产物（默认） |
-| `VITE_PUBLISH_BASE` | 浏览器端读取发布数据的基路径（默认 `/sites`） |
 | `VITE_DEV_SITE_CODE` / `VITE_SITE_CODE` | 本地无域名映射时的站点码覆盖（`global`） |
 | `PUBLISHED_ORIGIN` | 生产发布产物源（S3 `/static` 基地址，服务端读取，见 docs/CONFIG.md） |
 | `PORT` | 生产启动端口（默认 3003） |
@@ -64,6 +63,21 @@ pnpm dev        # http://localhost:3003
 - `pnpm check:architecture` — 边界检查（不得重新引入发布入口）
 - `pnpm test` — Vitest
 - `pnpm check:quality` — lint + 架构 + 测试 + 构建
+
+## Vercel 部署
+
+- 本仓库是 **pnpm 工程**：`vercel.json` 已设 `installCommand: pnpm install
+  --frozen-lockfile`（此前 Vercel 默认用 npm 安装导致
+  `Cannot read properties of null (reading 'edgesOut')` 崩溃）。
+- SSR：静态资产由 `dist/client` 直出，其余路径 rewrites 到
+  `api/[[...route]].ts`（Node 22 Web-standard handler），桥接 TanStack Start
+  的 `dist/server/server.js#fetch` —— 与 node 部署（`pnpm start`）同一处理器。
+- Vercel 项目需配置的环境变量：
+  - `PUBLISHED_ORIGIN=https://static.fast2x.com/<prefix>`（运行时，服务端远读）
+  - `VITE_PUBLISHED_CSS_URL=https://static.fast2x.com/<prefix>/global/published.css`
+  - `VITE_BLOCK_RENDERER_URL=https://static.fast2x.com/<prefix>/global/blocks-renderer.js`
+    （后两个为构建期变量；`<prefix>` 待 prd-admin 首次发布 COS 后核对）
+- Node 版本跟随 `engines.node`（22.x）；构建命令 `pnpm build`。
 
 ## 仓库远程
 

@@ -9,7 +9,8 @@ describe('PUBLIC_CONTENT_SECURITY_POLICY', () => {
     expect(PUBLIC_CONTENT_SECURITY_POLICY).not.toMatch(/(?:^|\s)\*(?:;|\s|$)/)
   })
 
-  it('carries no third-party runtime origins', () => {
+  it('allows the published-storage CDN origin and drops payment/reCAPTCHA leftovers', () => {
+    expect(PUBLIC_CONTENT_SECURITY_POLICY).toContain('https://static.fast2x.com')
     expect(PUBLIC_CONTENT_SECURITY_POLICY).not.toContain('google.com')
     expect(PUBLIC_CONTENT_SECURITY_POLICY).not.toContain('shift4api.net')
     expect(PUBLIC_CONTENT_SECURITY_POLICY).toContain("form-action 'self'")
