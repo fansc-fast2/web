@@ -72,11 +72,13 @@ pnpm dev        # http://localhost:3003
 - SSR：静态资产由 `dist/client` 直出，其余路径 rewrites 到
   `api/[[...route]].ts`（Node 22 Web-standard handler），桥接 TanStack Start
   的 `dist/server/server.js#fetch` —— 与 node 部署（`pnpm start`）同一处理器。
-- Vercel 项目需配置的环境变量：
-  - `PUBLISHED_ORIGIN=https://static.fast2x.com/<prefix>`（运行时，服务端远读）
-  - `VITE_PUBLISHED_CSS_URL=https://static.fast2x.com/<prefix>/global/published.css`
-  - `VITE_BLOCK_RENDERER_URL=https://static.fast2x.com/<prefix>/global/blocks-renderer.js`
-    （后两个为构建期变量；`<prefix>` 待 prd-admin 首次发布 COS 后核对）
+- Vercel 项目需配置的环境变量（**2026-09-29 已按真实发布产物验证**，对象布局
+  `sites/global/…`，CDN 直读 200，本地同链路冒烟渲染出官网首页）：
+  - `PUBLISHED_ORIGIN=https://static.fast2x.com/sites`（运行时，服务端远读
+    `global/…` 发布产物）
+  - `VITE_PUBLISHED_CSS_URL=https://static.fast2x.com/sites/global/assets/published.css`
+    （构建期；发布产物为服务端预渲染方案，**无需** `VITE_BLOCK_RENDERER_URL`，
+    桶中不存在 blocks-renderer.js，页面自带完整 HTML+绝对 CDN 资产地址）
 - Node 版本跟随 `engines.node`（22.x）；构建命令 `pnpm build`。
 
 ## 仓库远程
