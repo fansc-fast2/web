@@ -1,0 +1,250 @@
+{
+  "variables": 118,
+  "collections": [
+    {
+      "name": "fast2x / Primitives",
+      "count": 30,
+      "modes": [
+        {
+          "name": "Value",
+          "modeId": "19:0"
+        }
+      ]
+    },
+    {
+      "name": "fast2x / Color",
+      "count": 24,
+      "modes": [
+        {
+          "name": "Light",
+          "modeId": "19:1"
+        },
+        {
+          "name": "Dark",
+          "modeId": "19:2"
+        }
+      ]
+    },
+    {
+      "name": "fast2x / Foundation",
+      "count": 38,
+      "modes": [
+        {
+          "name": "Value",
+          "modeId": "19:3"
+        }
+      ]
+    },
+    {
+      "name": "fast2x / Typography",
+      "count": 26,
+      "modes": [
+        {
+          "name": "Value",
+          "modeId": "19:4"
+        }
+      ]
+    }
+  ],
+  "texts": 317,
+  "unbound": [],
+  "overflow": [],
+  "missingStyle": [],
+  "errors": [],
+  "contrast": [
+    {
+      "mode": "Light",
+      "pair": "text/primary / bg/canvas",
+      "ratio": 17.93,
+      "pass": true
+    },
+    {
+      "mode": "Light",
+      "pair": "text/secondary / bg/canvas",
+      "ratio": 7.81,
+      "pass": true
+    },
+    {
+      "mode": "Light",
+      "pair": "text/muted / bg/canvas",
+      "ratio": 4.74,
+      "pass": true
+    },
+    {
+      "mode": "Light",
+      "pair": "text/muted / bg/subtle",
+      "ratio": 4.54,
+      "pass": true
+    },
+    {
+      "mode": "Light",
+      "pair": "link/default / bg/canvas",
+      "ratio": 6.7,
+      "pass": true
+    },
+    {
+      "mode": "Light",
+      "pair": "action/on-primary / action/primary",
+      "ratio": 17.93,
+      "pass": true
+    },
+    {
+      "mode": "Light",
+      "pair": "action/on-primary / action/hover",
+      "ratio": 10.37,
+      "pass": true
+    },
+    {
+      "mode": "Light",
+      "pair": "action/on-primary / action/pressed",
+      "ratio": 21,
+      "pass": true
+    },
+    {
+      "mode": "Light",
+      "pair": "status/development-text / status/development-bg",
+      "ratio": 6.84,
+      "pass": true
+    },
+    {
+      "mode": "Light",
+      "pair": "status/success-text / status/success-bg",
+      "ratio": 6.81,
+      "pass": true
+    },
+    {
+      "mode": "Light",
+      "pair": "status/error-text / status/error-bg",
+      "ratio": 7.6,
+      "pass": true
+    },
+    {
+      "mode": "Light",
+      "pair": "focus/ring / bg/canvas",
+      "ratio": 5.17,
+      "pass": true
+    },
+    {
+      "mode": "Light",
+      "pair": "border/strong / bg/canvas",
+      "ratio": 4.74,
+      "pass": true
+    },
+    {
+      "mode": "Dark",
+      "pair": "text/primary / bg/canvas",
+      "ratio": 18.97,
+      "pass": true
+    },
+    {
+      "mode": "Dark",
+      "pair": "text/secondary / bg/canvas",
+      "ratio": 7.85,
+      "pass": true
+    },
+    {
+      "mode": "Dark",
+      "pair": "text/muted / bg/canvas",
+      "ratio": 7.85,
+      "pass": true
+    },
+    {
+      "mode": "Dark",
+      "pair": "text/muted / bg/subtle",
+      "ratio": 7.11,
+      "pass": true
+    },
+    {
+      "mode": "Dark",
+      "pair": "link/default / bg/canvas",
+      "ratio": 10.98,
+      "pass": true
+    },
+    {
+      "mode": "Dark",
+      "pair": "action/on-primary / action/primary",
+      "ratio": 18.97,
+      "pass": true
+    },
+    {
+      "mode": "Dark",
+      "pair": "action/on-primary / action/hover",
+      "ratio": 15.72,
+      "pass": true
+    },
+    {
+      "mode": "Dark",
+      "pair": "action/on-primary / action/pressed",
+      "ratio": 13.36,
+      "pass": true
+    },
+    {
+      "mode": "Dark",
+      "pair": "status/development-text / status/development-bg",
+      "ratio": 10.39,
+      "pass": true
+    },
+    {
+      "mode": "Dark",
+      "pair": "status/success-text / status/success-bg",
+      "ratio": 10.62,
+      "pass": true
+    },
+    {
+      "mode": "Dark",
+      "pair": "status/error-text / status/error-bg",
+      "ratio": 8.51,
+      "pass": true
+    },
+    {
+      "mode": "Dark",
+      "pair": "focus/ring / bg/canvas",
+      "ratio": 10.98,
+      "pass": true
+    },
+    {
+      "mode": "Dark",
+      "pair": "border/strong / bg/canvas",
+      "ratio": 4.18,
+      "pass": true
+    }
+  ],
+  "boards": [
+    {
+      "id": "20:3",
+      "name": "fast2x / 00 Cover",
+      "width": 1440,
+      "height": 1148
+    },
+    {
+      "id": "20:25",
+      "name": "fast2x / 01 Color",
+      "width": 1440,
+      "height": 4466
+    },
+    {
+      "id": "20:450",
+      "name": "fast2x / 02 Typography",
+      "width": 1440,
+      "height": 2186
+    },
+    {
+      "id": "20:511",
+      "name": "fast2x / 03 Layout",
+      "width": 1440,
+      "height": 2182
+    },
+    {
+      "id": "20:620",
+      "name": "fast2x / 04 Themes",
+      "width": 1440,
+      "height": 1373
+    },
+    {
+      "id": "20:670",
+      "name": "fast2x / 05 Usage",
+      "width": 1440,
+      "height": 1602
+    }
+  ]
+}

@@ -1,0 +1,862 @@
+{
+  "fileKey": "SBTFhKQLQmPOBY7LbhY05e",
+  "updated": "2026-09-28",
+  "scope": "One promotional homepage, four content blocks, English, desktop and mobile",
+  "pageId": "55:2",
+  "componentPageId": "55:5",
+  "frames": [
+    {
+      "id": "55:3",
+      "name": "Home / Desktop",
+      "width": 1440,
+      "height": 2625,
+      "visibleTextCount": 40,
+      "blockCount": 4,
+      "bad": [],
+      "links": [
+        {
+          "id": "57:4",
+          "name": "Brand / top",
+          "target": "57:13",
+          "valid": true,
+          "width": 108,
+          "height": 44
+        },
+        {
+          "id": "57:6",
+          "name": "Nav / Overview",
+          "target": "57:67",
+          "valid": true,
+          "width": 84,
+          "height": 44
+        },
+        {
+          "id": "57:8",
+          "name": "Nav / Approach",
+          "target": "57:97",
+          "valid": true,
+          "width": 84,
+          "height": 44
+        },
+        {
+          "id": "57:20",
+          "name": "CTA / See What We’re Building",
+          "target": "57:67",
+          "valid": true,
+          "width": 300,
+          "height": 48
+        },
+        {
+          "id": "57:140",
+          "name": "Footer / Back to top",
+          "target": "57:13",
+          "valid": true,
+          "width": 128,
+          "height": 44
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "57:13",
+          "name": "H01 / Hero + Audience",
+          "neutral": true,
+          "anchor": "top",
+          "legacy": "[\"who\"]"
+        },
+        {
+          "id": "57:67",
+          "name": "H02 / Overview",
+          "neutral": true,
+          "anchor": "overview",
+          "legacy": "[\"vision\"]"
+        },
+        {
+          "id": "57:97",
+          "name": "H03 / Approach",
+          "neutral": true,
+          "anchor": "approach",
+          "legacy": "[]"
+        },
+        {
+          "id": "57:123",
+          "name": "H04 / Development",
+          "neutral": true,
+          "anchor": "development",
+          "legacy": "[\"status\"]"
+        }
+      ],
+      "reserves": [
+        {
+          "id": "86:170",
+          "name": "Motion reserve / Hero edge sweep / opacity 0",
+          "visible": false,
+          "locked": true
+        },
+        {
+          "id": "86:172",
+          "name": "Motion reserve / Capability trace / opacity 0",
+          "visible": false,
+          "locked": true
+        },
+        {
+          "id": "86:174",
+          "name": "Motion reserve / Capability trace / opacity 0",
+          "visible": false,
+          "locked": true
+        },
+        {
+          "id": "86:176",
+          "name": "Motion reserve / Capability trace / opacity 0",
+          "visible": false,
+          "locked": true
+        }
+      ]
+    },
+    {
+      "id": "55:4",
+      "name": "Home / Mobile",
+      "width": 390,
+      "height": 3843.935546875,
+      "visibleTextCount": 40,
+      "blockCount": 4,
+      "bad": [],
+      "links": [
+        {
+          "id": "57:148",
+          "name": "Brand / top",
+          "target": "57:157",
+          "valid": true,
+          "width": 90,
+          "height": 44
+        },
+        {
+          "id": "57:150",
+          "name": "Nav / Overview",
+          "target": "57:188",
+          "valid": true,
+          "width": 84,
+          "height": 44
+        },
+        {
+          "id": "57:152",
+          "name": "Nav / Approach",
+          "target": "57:218",
+          "valid": true,
+          "width": 84,
+          "height": 44
+        },
+        {
+          "id": "57:164",
+          "name": "CTA / See What We’re Building",
+          "target": "57:188",
+          "valid": true,
+          "width": 300,
+          "height": 48
+        },
+        {
+          "id": "57:261",
+          "name": "Footer / Back to top",
+          "target": "57:157",
+          "valid": true,
+          "width": 128,
+          "height": 44
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "57:157",
+          "name": "H01 / Hero + Audience",
+          "neutral": true,
+          "anchor": "top",
+          "legacy": "[\"who\"]"
+        },
+        {
+          "id": "57:188",
+          "name": "H02 / Overview",
+          "neutral": true,
+          "anchor": "overview",
+          "legacy": "[\"vision\"]"
+        },
+        {
+          "id": "57:218",
+          "name": "H03 / Approach",
+          "neutral": true,
+          "anchor": "approach",
+          "legacy": "[]"
+        },
+        {
+          "id": "57:244",
+          "name": "H04 / Development",
+          "neutral": true,
+          "anchor": "development",
+          "legacy": "[\"status\"]"
+        }
+      ],
+      "reserves": [
+        {
+          "id": "86:178",
+          "name": "Motion reserve / Hero edge sweep / opacity 0",
+          "visible": false,
+          "locked": true
+        },
+        {
+          "id": "86:180",
+          "name": "Motion reserve / Capability trace / opacity 0",
+          "visible": false,
+          "locked": true
+        },
+        {
+          "id": "86:182",
+          "name": "Motion reserve / Capability trace / opacity 0",
+          "visible": false,
+          "locked": true
+        },
+        {
+          "id": "86:184",
+          "name": "Motion reserve / Capability trace / opacity 0",
+          "visible": false,
+          "locked": true
+        }
+      ]
+    },
+    {
+      "id": "61:60",
+      "name": "Preview / Desktop",
+      "width": 1440,
+      "height": 900,
+      "visibleTextCount": 40,
+      "blockCount": 4,
+      "bad": [],
+      "links": [
+        {
+          "id": "144:153",
+          "name": "Brand / top",
+          "target": "144:158",
+          "valid": true,
+          "width": 108,
+          "height": 44
+        },
+        {
+          "id": "144:155",
+          "name": "Nav / Overview",
+          "target": "144:186",
+          "valid": true,
+          "width": 84,
+          "height": 44
+        },
+        {
+          "id": "144:156",
+          "name": "Nav / Approach",
+          "target": "144:230",
+          "valid": true,
+          "width": 84,
+          "height": 44
+        },
+        {
+          "id": "144:163",
+          "name": "CTA / See What We’re Building",
+          "target": "144:186",
+          "valid": true,
+          "width": 300,
+          "height": 48
+        },
+        {
+          "id": "144:268",
+          "name": "Footer / Back to top",
+          "target": "144:158",
+          "valid": true,
+          "width": 128,
+          "height": 44
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "144:158",
+          "name": "H01 / Hero + Audience",
+          "neutral": true,
+          "anchor": "top",
+          "legacy": "[\"who\"]"
+        },
+        {
+          "id": "144:186",
+          "name": "H02 / Overview",
+          "neutral": true,
+          "anchor": "overview",
+          "legacy": "[\"vision\"]"
+        },
+        {
+          "id": "144:230",
+          "name": "H03 / Approach",
+          "neutral": true,
+          "anchor": "approach",
+          "legacy": "[]"
+        },
+        {
+          "id": "144:256",
+          "name": "H04 / Development",
+          "neutral": true,
+          "anchor": "development",
+          "legacy": "[\"status\"]"
+        }
+      ],
+      "reserves": [
+        {
+          "id": "144:182",
+          "name": "Motion reserve / Hero edge sweep / opacity 0",
+          "visible": false,
+          "locked": true
+        },
+        {
+          "id": "144:201",
+          "name": "Motion reserve / Capability trace / opacity 0",
+          "visible": false,
+          "locked": true
+        },
+        {
+          "id": "144:213",
+          "name": "Motion reserve / Capability trace / opacity 0",
+          "visible": false,
+          "locked": true
+        },
+        {
+          "id": "144:226",
+          "name": "Motion reserve / Capability trace / opacity 0",
+          "visible": false,
+          "locked": true
+        }
+      ]
+    },
+    {
+      "id": "61:204",
+      "name": "Preview / Mobile",
+      "width": 390,
+      "height": 844,
+      "visibleTextCount": 40,
+      "blockCount": 4,
+      "bad": [],
+      "links": [
+        {
+          "id": "144:295",
+          "name": "Brand / top",
+          "target": "144:300",
+          "valid": true,
+          "width": 90,
+          "height": 44
+        },
+        {
+          "id": "144:297",
+          "name": "Nav / Overview",
+          "target": "144:328",
+          "valid": true,
+          "width": 84,
+          "height": 44
+        },
+        {
+          "id": "144:298",
+          "name": "Nav / Approach",
+          "target": "144:372",
+          "valid": true,
+          "width": 84,
+          "height": 44
+        },
+        {
+          "id": "144:305",
+          "name": "CTA / See What We’re Building",
+          "target": "144:328",
+          "valid": true,
+          "width": 300,
+          "height": 48
+        },
+        {
+          "id": "144:410",
+          "name": "Footer / Back to top",
+          "target": "144:300",
+          "valid": true,
+          "width": 128,
+          "height": 44
+        }
+      ],
+      "backgrounds": [
+        {
+          "id": "144:300",
+          "name": "H01 / Hero + Audience",
+          "neutral": true,
+          "anchor": "top",
+          "legacy": "[\"who\"]"
+        },
+        {
+          "id": "144:328",
+          "name": "H02 / Overview",
+          "neutral": true,
+          "anchor": "overview",
+          "legacy": "[\"vision\"]"
+        },
+        {
+          "id": "144:372",
+          "name": "H03 / Approach",
+          "neutral": true,
+          "anchor": "approach",
+          "legacy": "[]"
+        },
+        {
+          "id": "144:398",
+          "name": "H04 / Development",
+          "neutral": true,
+          "anchor": "development",
+          "legacy": "[\"status\"]"
+        }
+      ],
+      "reserves": [
+        {
+          "id": "144:324",
+          "name": "Motion reserve / Hero edge sweep / opacity 0",
+          "visible": false,
+          "locked": true
+        },
+        {
+          "id": "144:343",
+          "name": "Motion reserve / Capability trace / opacity 0",
+          "visible": false,
+          "locked": true
+        },
+        {
+          "id": "144:355",
+          "name": "Motion reserve / Capability trace / opacity 0",
+          "visible": false,
+          "locked": true
+        },
+        {
+          "id": "144:368",
+          "name": "Motion reserve / Capability trace / opacity 0",
+          "visible": false,
+          "locked": true
+        }
+      ]
+    }
+  ],
+  "components": {
+    "actions": {
+      "Primary/Default": "56:5",
+      "Primary/Hover": "56:8",
+      "Primary/Pressed": "56:11",
+      "Primary/Focus": "56:14",
+      "Navigation/Default": "56:17",
+      "Navigation/Hover": "56:19",
+      "Navigation/Pressed": "56:21",
+      "Navigation/Focus": "56:23"
+    },
+    "cards": {
+      "Desktop": "56:31",
+      "Mobile": "56:38"
+    },
+    "badge": "56:27"
+  },
+  "componentReference": "56:2",
+  "prototypes": {
+    "Desktop": {
+      "viewportId": "61:60",
+      "contentId": "144:150",
+      "width": 1440,
+      "height": 900,
+      "contentHeight": 2625,
+      "targets": {
+        "top": "144:158",
+        "overview": "144:186",
+        "approach": "144:230",
+        "development": "144:256"
+      },
+      "reactions": [
+        {
+          "id": "144:153",
+          "name": "Brand / top",
+          "target": "144:158",
+          "valid": true,
+          "width": 108,
+          "height": 44
+        },
+        {
+          "id": "144:155",
+          "name": "Nav / Overview",
+          "target": "144:186",
+          "valid": true,
+          "width": 84,
+          "height": 44
+        },
+        {
+          "id": "144:156",
+          "name": "Nav / Approach",
+          "target": "144:230",
+          "valid": true,
+          "width": 84,
+          "height": 44
+        },
+        {
+          "id": "144:163",
+          "name": "CTA / See What We’re Building",
+          "target": "144:186",
+          "valid": true,
+          "width": 300,
+          "height": 48
+        },
+        {
+          "id": "144:268",
+          "name": "Footer / Back to top",
+          "target": "144:158",
+          "valid": true,
+          "width": 128,
+          "height": 44
+        }
+      ]
+    },
+    "Mobile": {
+      "viewportId": "61:204",
+      "contentId": "144:292",
+      "width": 390,
+      "height": 844,
+      "contentHeight": 3843.935546875,
+      "targets": {
+        "top": "144:300",
+        "overview": "144:328",
+        "approach": "144:372",
+        "development": "144:398"
+      },
+      "reactions": [
+        {
+          "id": "144:295",
+          "name": "Brand / top",
+          "target": "144:300",
+          "valid": true,
+          "width": 90,
+          "height": 44
+        },
+        {
+          "id": "144:297",
+          "name": "Nav / Overview",
+          "target": "144:328",
+          "valid": true,
+          "width": 84,
+          "height": 44
+        },
+        {
+          "id": "144:298",
+          "name": "Nav / Approach",
+          "target": "144:372",
+          "valid": true,
+          "width": 84,
+          "height": 44
+        },
+        {
+          "id": "144:305",
+          "name": "CTA / See What We’re Building",
+          "target": "144:328",
+          "valid": true,
+          "width": 300,
+          "height": 48
+        },
+        {
+          "id": "144:410",
+          "name": "Footer / Back to top",
+          "target": "144:300",
+          "valid": true,
+          "width": 128,
+          "height": 44
+        }
+      ]
+    }
+  },
+  "handoffId": "61:325",
+  "textStyles": [
+    {
+      "id": "S:7c963cf7f40be7bd3953e33e93b7813c557d2e61,",
+      "name": "fast2x/Display/Desktop"
+    },
+    {
+      "id": "S:0c84f5294d44777fa9c080ef785bd052c181b391,",
+      "name": "fast2x/Display/Mobile"
+    },
+    {
+      "id": "S:6181caa9d9bca661d330eab001e76ec5a5fc530f,",
+      "name": "fast2x/Heading/H1"
+    },
+    {
+      "id": "S:ed0fe50a7bd8a4da8c49168acba9f817926a1d33,",
+      "name": "fast2x/Heading/H2"
+    },
+    {
+      "id": "S:393a08256a9ed7e8cc0b36da5ff692c6f7e19551,",
+      "name": "fast2x/Heading/H2-Mobile"
+    },
+    {
+      "id": "S:94e43ac2204687343327e9547ad299739e4da715,",
+      "name": "fast2x/Heading/H3"
+    },
+    {
+      "id": "S:af7ddf09f704a0d62aaf623491b9894b862d5bf9,",
+      "name": "fast2x/Body/Large"
+    },
+    {
+      "id": "S:0c7658874136a650594e76dd561b615cf36a1628,",
+      "name": "fast2x/Body/Default"
+    },
+    {
+      "id": "S:7480ba97e8a06ffc640932cea98291333b2cb945,",
+      "name": "fast2x/Body/Small"
+    },
+    {
+      "id": "S:616817ced0e9fb09692c52796274e521e30cbf54,",
+      "name": "fast2x/Label/Default"
+    },
+    {
+      "id": "S:e0f5fc501af90d94dc451bbf7d201e80174af16a,",
+      "name": "fast2x/Label/Small"
+    },
+    {
+      "id": "S:46c7e0e42992f81d6498ab1385b3b3e0478db17a,",
+      "name": "fast2x/Mono/Default"
+    },
+    {
+      "id": "S:e94a04810a4bb4d9697247bd899b017e7b0f5b93,",
+      "name": "fast2x/Mono/Eyebrow"
+    },
+    {
+      "id": "S:737ca71752f19314a342f174eff4eb68c50d29b2,",
+      "name": "fast2x/Brand/Wordmark"
+    },
+    {
+      "id": "S:ad75812715aa6ebd5c936a4663e2a55e6ad43bd1,",
+      "name": "fast2x/Brand/Wordmark-Mobile"
+    },
+    {
+      "id": "S:9938aee4d6fc49071701387f9be6a66c3a54d2cb,",
+      "name": "fast2x/Display/Editorial"
+    },
+    {
+      "id": "S:5d5ae8b83cf437f58a42bae0e5ccc0e9e7b874e0,",
+      "name": "fast2x/Display/Editorial-Mobile"
+    },
+    {
+      "id": "S:08070a36195a6aedb70cf0098300a11e3ec360ff,",
+      "name": "fast2x/Brand/Wordmark-Large"
+    }
+  ],
+  "variableCount": 122,
+  "websiteImplemented": false,
+  "libraryPublished": false,
+  "version": "1.2",
+  "archives": [
+    {
+      "id": "75:114",
+      "name": "Archive v1.0 / Home / Desktop"
+    },
+    {
+      "id": "75:252",
+      "name": "Archive v1.0 / Home / Mobile"
+    }
+  ],
+  "motion": {
+    "boardId": "87:168",
+    "masterReserves": [
+      {
+        "id": "86:170",
+        "parent": "77:168",
+        "rootId": "55:3",
+        "kind": "hero-edge",
+        "visible": false
+      },
+      {
+        "id": "86:172",
+        "parent": "79:169",
+        "rootId": "55:3",
+        "kind": "capability-trace",
+        "visible": false
+      },
+      {
+        "id": "86:174",
+        "parent": "79:187",
+        "rootId": "55:3",
+        "kind": "capability-trace",
+        "visible": false
+      },
+      {
+        "id": "86:176",
+        "parent": "79:205",
+        "rootId": "55:3",
+        "kind": "capability-trace",
+        "visible": false
+      },
+      {
+        "id": "86:178",
+        "parent": "77:184",
+        "rootId": "55:4",
+        "kind": "hero-edge",
+        "visible": false
+      },
+      {
+        "id": "86:180",
+        "parent": "79:178",
+        "rootId": "55:4",
+        "kind": "capability-trace",
+        "visible": false
+      },
+      {
+        "id": "86:182",
+        "parent": "79:196",
+        "rootId": "55:4",
+        "kind": "capability-trace",
+        "visible": false
+      },
+      {
+        "id": "86:184",
+        "parent": "79:215",
+        "rootId": "55:4",
+        "kind": "capability-trace",
+        "visible": false
+      }
+    ],
+    "previewReserves": [
+      {
+        "id": "144:182",
+        "name": "Motion reserve / Hero edge sweep / opacity 0",
+        "visible": false,
+        "locked": true,
+        "rootId": "61:60"
+      },
+      {
+        "id": "144:201",
+        "name": "Motion reserve / Capability trace / opacity 0",
+        "visible": false,
+        "locked": true,
+        "rootId": "61:60"
+      },
+      {
+        "id": "144:213",
+        "name": "Motion reserve / Capability trace / opacity 0",
+        "visible": false,
+        "locked": true,
+        "rootId": "61:60"
+      },
+      {
+        "id": "144:226",
+        "name": "Motion reserve / Capability trace / opacity 0",
+        "visible": false,
+        "locked": true,
+        "rootId": "61:60"
+      },
+      {
+        "id": "144:324",
+        "name": "Motion reserve / Hero edge sweep / opacity 0",
+        "visible": false,
+        "locked": true,
+        "rootId": "61:204"
+      },
+      {
+        "id": "144:343",
+        "name": "Motion reserve / Capability trace / opacity 0",
+        "visible": false,
+        "locked": true,
+        "rootId": "61:204"
+      },
+      {
+        "id": "144:355",
+        "name": "Motion reserve / Capability trace / opacity 0",
+        "visible": false,
+        "locked": true,
+        "rootId": "61:204"
+      },
+      {
+        "id": "144:368",
+        "name": "Motion reserve / Capability trace / opacity 0",
+        "visible": false,
+        "locked": true,
+        "rootId": "61:204"
+      }
+    ],
+    "effectStyles": [
+      {
+        "id": "S:1e47ce2245ee6cdadf1e868f9d4dcff91fcffc76,",
+        "name": "fast2x/Light/Neutral Edge",
+        "effects": [
+          {
+            "type": "DROP_SHADOW",
+            "visible": true,
+            "radius": 8,
+            "boundVariables": {},
+            "color": {
+              "r": 1,
+              "g": 1,
+              "b": 1,
+              "a": 0.2800000011920929
+            },
+            "offset": {
+              "x": 0,
+              "y": 0
+            },
+            "spread": 0,
+            "blendMode": "NORMAL",
+            "showShadowBehindNode": true
+          }
+        ]
+      },
+      {
+        "id": "S:0ae32c4e7a5e783baa76f373625276b7b67836a5,",
+        "name": "fast2x/Light/Accent Edge",
+        "effects": [
+          {
+            "type": "DROP_SHADOW",
+            "visible": true,
+            "radius": 8,
+            "boundVariables": {},
+            "color": {
+              "r": 0.11372549086809158,
+              "g": 0.30588236451148987,
+              "b": 0.8470588326454163,
+              "a": 0.20000000298023224
+            },
+            "offset": {
+              "x": 0,
+              "y": 0
+            },
+            "spread": 0,
+            "blendMode": "NORMAL",
+            "showShadowBehindNode": true
+          }
+        ]
+      }
+    ],
+    "animationWired": false
+  },
+  "constraints": [
+    "All section backgrounds remain neutral black, white or gray.",
+    "Color is limited to small graphics, status dots and local effects.",
+    "Light motion is a design reserve, not implemented website behavior."
+  ],
+  "effectStyles": [
+    {
+      "id": "S:c335ef9e8efb37711b0ce90bce79a50b9b024f82,",
+      "name": "fast2x/Shadow/Subtle"
+    },
+    {
+      "id": "S:270406c8af36d5bcb28bea67651c5dddc10b2bba,",
+      "name": "fast2x/Shadow/Floating"
+    },
+    {
+      "id": "S:1e47ce2245ee6cdadf1e868f9d4dcff91fcffc76,",
+      "name": "fast2x/Light/Neutral Edge"
+    },
+    {
+      "id": "S:0ae32c4e7a5e783baa76f373625276b7b67836a5,",
+      "name": "fast2x/Light/Accent Edge"
+    }
+  ],
+  "copySource": "../官网内容与导航_v1.2.md",
+  "legacyAnchors": {
+    "who": "top",
+    "vision": "overview",
+    "status": "development"
+  },
+  "historicalContent": {
+    "id": "48:2",
+    "supersededBy": "55:3",
+    "version": "1.1"
+  }
+}
