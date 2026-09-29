@@ -65,6 +65,12 @@ pnpm dev        # http://localhost:3003
 - `pnpm test` — Vitest
 - `pnpm check:quality` — lint + 架构 + 测试 + 构建
 
+## 仓库远程
+
+- `origin` = `https://cnb.cool/fast2x/prd-web`（权威源）
+- `github` = `git@github.com:fansc-fast2/web.git`（网络阻断时滞后补推：
+  `git push --force github main:main`）
+
 ## 边界
 
 - 本仓库**只读**发布产物：不发布、不管理内容（发布属 prd-admin）。
