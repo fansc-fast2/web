@@ -22,10 +22,20 @@ import { TMS_CDN_ASSET_VERSION } from "@/generated/tms-cdn-assets";
 // development uses the synced public/cdn copies so renderer changes are
 // visible before the next publish. Env overrides remain available.
 const ASSET_BASE = import.meta.env.DEV ? "/cdn" : "/s3/global";
+// 无同源代理的运行时(Vercel)可由构建期 PUBLISHED_ORIGIN 推导绝对地址,
+// 显式 VITE_* 变量优先,最后回退同源代理路径(node /s3、dev 本地 /cdn)。
+const PUBLISHED_ORIGIN_BASE =
+  (typeof __PUBLISHED_ORIGIN__ !== "undefined" ? __PUBLISHED_ORIGIN__ : "") || "";
 const BLOCK_RENDERER_URL =
-  import.meta.env.VITE_BLOCK_RENDERER_URL || `${ASSET_BASE}/blocks-renderer.js?v=${TMS_CDN_ASSET_VERSION}`;
+  import.meta.env.VITE_BLOCK_RENDERER_URL ||
+  (PUBLISHED_ORIGIN_BASE
+    ? `${PUBLISHED_ORIGIN_BASE}/global/blocks-renderer.js?v=${TMS_CDN_ASSET_VERSION}`
+    : `${ASSET_BASE}/blocks-renderer.js?v=${TMS_CDN_ASSET_VERSION}`);
 const PUBLISHED_CSS_URL =
-  import.meta.env.VITE_PUBLISHED_CSS_URL || `${ASSET_BASE}/published.css?v=${TMS_CDN_ASSET_VERSION}`;
+  import.meta.env.VITE_PUBLISHED_CSS_URL ||
+  (PUBLISHED_ORIGIN_BASE
+    ? `${PUBLISHED_ORIGIN_BASE}/global/assets/published.css?v=${TMS_CDN_ASSET_VERSION}`
+    : `${ASSET_BASE}/published.css?v=${TMS_CDN_ASSET_VERSION}`);
 
 // Published pages already contain their HTML. Keep the carousel runtime out of
 // the public entry chunk and load it only when the current fragment needs it.

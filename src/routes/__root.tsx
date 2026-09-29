@@ -10,6 +10,16 @@ import '../styles/globals.css'
 // e.g. https://<bucket>.cos.<region>.myqcloud.com — optional, build-time.
 const PUBLISHED_ASSET_ORIGIN = (import.meta.env.VITE_PUBLISHED_PUBLIC_ORIGIN as string | undefined)?.replace(/\/+$/, '')
 
+/** published.css 地址:显式变量 > 构建期 PUBLISHED_ORIGIN 推导 > 同源代理路径。 */
+const publishedCssHref = (() => {
+  const v = import.meta.env.DEV ? '/cdn' : '/s3/global'
+  if (import.meta.env.VITE_PUBLISHED_CSS_URL)
+    return `${String(import.meta.env.VITE_PUBLISHED_CSS_URL).replace(/\/+$/, '')}?v=${TMS_CDN_ASSET_VERSION}`
+  if (typeof __PUBLISHED_ORIGIN__ !== 'undefined' && __PUBLISHED_ORIGIN__)
+    return `${__PUBLISHED_ORIGIN__}/global/assets/published.css?v=${TMS_CDN_ASSET_VERSION}`
+  return `${v}/published.css?v=${TMS_CDN_ASSET_VERSION}`
+})()
+
 export const Route = createRootRoute({
   component: RootComponent,
   // root 级错误/未找到会整体替换 <html> 渲染——必须自带完整文档结构,
@@ -45,18 +55,10 @@ function RootComponent() {
             when the visitor previously chose Chinese (locale is URL-derived,
             so without this the language choice evaporates on the next click). */}
         <script dangerouslySetInnerHTML={{ __html: LOCALE_PREFERENCE_BOOT_SCRIPT }} />
-        {/* Published CSS: same-origin proxy path by default (node 部署经
-            server-entry /s3 代理);Vercel 等无代理运行时用 VITE_PUBLISHED_CSS_URL
-            指向 CDN 绝对地址(完整含文件名)。 */}
-        <link
-          rel="stylesheet"
-          href={
-            import.meta.env.VITE_PUBLISHED_CSS_URL
-              ? `${String(import.meta.env.VITE_PUBLISHED_CSS_URL).replace(/\/+$/, '')}?v=${TMS_CDN_ASSET_VERSION}`
-              : `${import.meta.env.DEV ? '/cdn' : '/s3/global'}/published.css?v=${TMS_CDN_ASSET_VERSION}`
-          }
-          data-published-css="1"
-        />
+        {/* Published CSS 地址推导链:VITE_PUBLISHED_CSS_URL(完整含文件名)→
+            构建期 PUBLISHED_ORIGIN(推导 global/assets/published.css)→ 同源
+            代理路径(node 部署经 server-entry /s3;dev 走本地 /cdn 镜像)。 */}
+        <link rel="stylesheet" href={publishedCssHref} data-published-css="1" />
         <HeadContent />
       </head>
       <body>

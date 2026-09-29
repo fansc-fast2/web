@@ -77,4 +77,10 @@ export default defineConfig({
     viteReact(),
     tsConfigPaths(),
   ],
+  // 构建期把服务端的 PUBLISHED_ORIGIN 透传给客户端代码:无同源代理的运行时
+  // (如 Vercel)可用它推导 published.css / blocks-renderer.js 的绝对地址,
+  // 不必再单独配 VITE_PUBLISHED_CSS_URL 等构建期变量。
+  define: {
+    __PUBLISHED_ORIGIN__: JSON.stringify((process.env.PUBLISHED_ORIGIN || '').replace(/\/+$/, '')),
+  },
 })
