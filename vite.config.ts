@@ -59,11 +59,12 @@ export default defineConfig({
             },
           }
         : {}),
-      // Strapi 本地上传的媒体（头像等，local provider 返回 /uploads/... 相对
-      // URL）走同源代理，浏览器无需直连后端（部分环境无法直达后端端口）。
+      // CMS 媒体（/uploads/... 相对引用）同源代理到后端(prdapi.fast2x.com,
+      // 生产地址;本地内网调试可在 shell 环境覆盖 UPSTREAM_API)。
       '/uploads': {
-        target: 'http://192.168.101.90:1339',
+        target: process.env.UPSTREAM_API || 'https://prdapi.fast2x.com',
         changeOrigin: true,
+        secure: true,
       },
     },
   },
