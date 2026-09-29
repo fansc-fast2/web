@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "pnpm install --frozen-lockfile",
+  "installCommand": "npx -y pnpm@10.3.0 install --frozen-lockfile",
   "buildCommand": "pnpm build",
   "outputDirectory": "dist/client",
   "functions": {
@@ -8,5 +8,10 @@
       "maxDuration": 30
     }
   },
-  "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ]
 }
