@@ -26,3 +26,5 @@ NODE_ENV=production PUBLISHED_ORIGIN=https://static.fast2x.com/sites PORT=3108 n
 按 Vercel 官方 TanStack Start 指南加入 `nitro/vite`，移除手写 API、`outputDirectory` 与 SSR rewrite，显式声明 `tanstack-start` 框架；保留 `/uploads/**` 到 CMS 的代理。`VERCEL=1 pnpm build` 生成 Vercel Build Output API v3：`functions/__server.func`、`static/assets/*` 和 catch-all `/__server` 路由。Nitro Vercel 本地预览 3109 返回首页 HTTP 200，完整 SSR HTML 61276 字符；桌面 1280px 无溢出，5 张可见图片加载成功、浏览器无 error。类型检查、6 项现有测试通过。
 
 Nitro 3 构建器提示当前 Vite 7 与其声明的 Vite 8 要求不同，实际 Vercel 产物构建和本地预览均通过。这个兼容性提示需在后续升级 Vite 时消除。部署 URL 和真实域名仍需独立验收。
+
+新版本 f8033c8 上线后已从 Vercel 系统 404 转为应用级 Page not found，证明 Nitro 函数生效。CDN `sites/global/data/pages.json` 与 `fragments/home.html` 均返回 200；运行时未读到数据。给 fast2x 专用官网补充 `https://static.fast2x.com/sites` 默认源，并兼容旧值 `https://static.fast2x.com`。重新以 `PUBLISHED_ORIGIN=` 构建并运行 Nitro Vercel 预览，首页返回 HTTP 200、含真实 Hero，作为线上无变量场景的直接验证。

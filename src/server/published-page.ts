@@ -55,7 +55,13 @@ const storefrontSiteCode = 'global'
 // base) is the source of truth — a build-time local copy must never shadow
 // freshly published content, so remote is tried first and local is only an
 // offline fallback. Release-scoped paths (releases/<id>/) only exist remotely.
-const publishOrigin = (process.env.PUBLISHED_ORIGIN || '').replace(/\/+$/, '')
+// This storefront has a fixed published-content bucket. Keep the runtime
+// usable when Vercel's project-level variable is missing or still points at
+// the CDN root from the older deployment layout.
+const configuredPublishOrigin = (process.env.PUBLISHED_ORIGIN || '').replace(/\/+$/, '')
+const publishOrigin = configuredPublishOrigin === 'https://static.fast2x.com'
+  ? `${configuredPublishOrigin}/sites`
+  : configuredPublishOrigin || 'https://static.fast2x.com/sites'
 
 /**
  * Preserve publish-time loading decisions while giving the first real hero

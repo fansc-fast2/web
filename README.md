@@ -76,7 +76,7 @@ pnpm dev        # http://localhost:3003
 - Vercel 项目需配置的环境变量（**2026-09-29 已按真实发布产物验证**，对象布局
   `sites/global/…`，CDN 直读 200，本地同链路冒烟渲染出官网首页）：
   - `PUBLISHED_ORIGIN=https://static.fast2x.com/sites`（运行时，服务端远读
-    `global/…` 发布产物）
+    `global/…` 发布产物；缺失时对 fast2x 官网使用同一已确认地址）
   - `VITE_PUBLISHED_CSS_URL=https://static.fast2x.com/sites/global/assets/published.css`
     （构建期；发布产物为服务端预渲染方案，**无需** `VITE_BLOCK_RENDERER_URL`，
     桶中不存在 blocks-renderer.js，页面自带完整 HTML+绝对 CDN 资产地址）
