@@ -70,8 +70,10 @@ pnpm dev        # http://localhost:3003
   --frozen-lockfile`（此前 Vercel 默认用 npm 安装导致
   `Cannot read properties of null (reading 'edgesOut')` 崩溃）。
 - SSR：静态资产由 `dist/client` 直出，其余路径 rewrites 到
-  `api/[[...route]].ts`（Node 22 Web-standard handler），桥接 TanStack Start
+  `api/render.ts`（Node 22 `export default { fetch }` handler），桥接 TanStack Start
   的 `dist/server/server.js#fetch` —— 与 node 部署（`pnpm start`）同一处理器。
+  非静态路径重写到 `/api/render?__pathname=:path*`，函数还原业务路径并移除内部参数；
+  静态文件由 Vercel 优先匹配，服务端动态 chunks 通过 `includeFiles` 一起打包。
 - Vercel 项目需配置的环境变量（**2026-09-29 已按真实发布产物验证**，对象布局
   `sites/global/…`，CDN 直读 200，本地同链路冒烟渲染出官网首页）：
   - `PUBLISHED_ORIGIN=https://static.fast2x.com/sites`（运行时，服务端远读

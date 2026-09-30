@@ -122,3 +122,7 @@ h1, h2, h3, h4, h5, h6 {
 .site-navigation__actions > .site-navigation__jingbao {
   margin-right: 0;
 }
+/* The storefront shell owns the browser reset; published fragments only style blocks. */
+body {
+  margin: 0;
+}

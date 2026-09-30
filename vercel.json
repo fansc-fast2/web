@@ -4,18 +4,15 @@
   "buildCommand": "npx -y pnpm@10.3.0 run build",
   "outputDirectory": "dist/client",
   "functions": {
-    "api/[[...route]].ts": {
-      "maxDuration": 30
+    "api/render.ts": {
+      "maxDuration": 30,
+      "includeFiles": "dist/server/**"
     }
   },
   "rewrites": [
     {
-      "source": "/",
-      "destination": "/api/"
-    },
-    {
       "source": "/:path*",
-      "destination": "/api/:path*"
+      "destination": "/api/render?__pathname=:path*"
     }
   ]
 }
