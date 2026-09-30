@@ -18,3 +18,11 @@ NODE_ENV=production PUBLISHED_ORIGIN=https://static.fast2x.com/sites PORT=3108 n
 ```
 
 生产 Vercel 项目需保持 PUBLISHED_ORIGIN=https://static.fast2x.com/sites，构建 pnpm build，输出 dist/client，Node 22。登录现有绑定 app.fast2x.com 的项目后部署此工作区，核验首页、静态 JS/CSS 与服务端函数，确认成功后再视作上线完成。
+
+## 2026-09-30 Vercel 404 后续排查
+
+此前手写 `api/render.ts` 的 Vite 构建在 Vercel 显示部署完成，但 app.fast2x.com 的 `/` 返回 `x-vercel-error: NOT_FOUND`，`/api/render` 和静态文件也返回 404；因此原先本地函数冒烟不代表 Vercel 部署产物可运行。
+
+按 Vercel 官方 TanStack Start 指南加入 `nitro/vite`，移除手写 API、`outputDirectory` 与 SSR rewrite，显式声明 `tanstack-start` 框架；保留 `/uploads/**` 到 CMS 的代理。`VERCEL=1 pnpm build` 生成 Vercel Build Output API v3：`functions/__server.func`、`static/assets/*` 和 catch-all `/__server` 路由。Nitro Vercel 本地预览 3109 返回首页 HTTP 200，完整 SSR HTML 61276 字符；桌面 1280px 无溢出，5 张可见图片加载成功、浏览器无 error。类型检查、6 项现有测试通过。
+
+Nitro 3 构建器提示当前 Vite 7 与其声明的 Vite 8 要求不同，实际 Vercel 产物构建和本地预览均通过。这个兼容性提示需在后续升级 Vite 时消除。部署 URL 和真实域名仍需独立验收。

@@ -69,17 +69,14 @@ pnpm dev        # http://localhost:3003
 - 本仓库是 **pnpm 工程**：`vercel.json` 已设 `installCommand: pnpm install
   --frozen-lockfile`（此前 Vercel 默认用 npm 安装导致
   `Cannot read properties of null (reading 'edgesOut')` 崩溃）。
-- SSR：静态资产由 `dist/client` 直出，其余路径 rewrites 到
-  `api/render.ts`（Node 22 `export default { fetch }` handler），桥接 TanStack Start
-  的 `dist/server/server.js#fetch` —— 与 node 部署（`pnpm start`）同一处理器。
-  非静态路径重写到 `/api/render?__pathname=:path*`，函数还原业务路径并移除内部参数；
-  静态文件由 Vercel 优先匹配，服务端动态 chunks 通过 `includeFiles` 一起打包。
+- SSR 使用 Vercel 官方 TanStack Start + Nitro 插件。`VERCEL=1 pnpm build`
+  生成 `.vercel/output/functions/__server.func`、静态资产与完整路由配置；
+  生产不再依赖手写 API 函数和输出目录覆盖。`/uploads/**` 保留同源反代到
+  `prdapi.fast2x.com`。
 - Vercel 项目需配置的环境变量（**2026-09-29 已按真实发布产物验证**，对象布局
   `sites/global/…`，CDN 直读 200，本地同链路冒烟渲染出官网首页）：
   - `PUBLISHED_ORIGIN=https://static.fast2x.com/sites`（运行时，服务端远读
     `global/…` 发布产物）
-  - `API_ORIGIN=https://prdapi.fast2x.com`（可选,默认即此值;`/uploads/**`
-    CMS 媒体经前端同源反代到该地址）
   - `VITE_PUBLISHED_CSS_URL=https://static.fast2x.com/sites/global/assets/published.css`
     （构建期；发布产物为服务端预渲染方案，**无需** `VITE_BLOCK_RENDERER_URL`，
     桶中不存在 blocks-renderer.js，页面自带完整 HTML+绝对 CDN 资产地址）

@@ -1,18 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "tanstack-start",
   "installCommand": "npx -y pnpm@10.3.0 install --frozen-lockfile",
   "buildCommand": "npx -y pnpm@10.3.0 run build",
-  "outputDirectory": "dist/client",
-  "functions": {
-    "api/render.ts": {
-      "maxDuration": 30,
-      "includeFiles": "dist/server/**"
-    }
-  },
   "rewrites": [
     {
-      "source": "/:path*",
-      "destination": "/api/render?__pathname=:path*"
+      "source": "/uploads/:path*",
+      "destination": "https://prdapi.fast2x.com/uploads/:path*"
     }
   ]
 }
