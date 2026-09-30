@@ -58,10 +58,15 @@ const storefrontSiteCode = 'global'
 // This storefront has a fixed published-content bucket. Keep the runtime
 // usable when Vercel's project-level variable is missing or still points at
 // the CDN root from the older deployment layout.
+const FAST2X_PUBLISHED_ORIGINS = [
+  'https://static.fast2x.com/sites',
+  'https://cms-1300577073.cos.ap-beijing.myqcloud.com/sites',
+]
 const configuredPublishOrigin = (process.env.PUBLISHED_ORIGIN || '').replace(/\/+$/, '')
-const publishOrigin = configuredPublishOrigin === 'https://static.fast2x.com'
+const normalizedPublishOrigin = configuredPublishOrigin === 'https://static.fast2x.com'
   ? `${configuredPublishOrigin}/sites`
-  : configuredPublishOrigin || 'https://static.fast2x.com/sites'
+  : configuredPublishOrigin
+const publishOrigins = [...new Set([...FAST2X_PUBLISHED_ORIGINS, normalizedPublishOrigin].filter(Boolean))]
 
 /**
  * Preserve publish-time loading decisions while giving the first real hero
@@ -167,17 +172,22 @@ async function readLocalPublishedText(relativePath: string): Promise<string | nu
 }
 
 async function readRemotePublishedText(relativePath: string): Promise<string | null> {
-  if (!publishOrigin) return null
-  try {
-    const response = await fetch(`${publishOrigin}/${relativePath}`, {
-      cache: 'no-store',
-      headers: { Accept: 'text/html, application/json;q=0.9, */*;q=0.8' },
-      signal: AbortSignal.timeout(8000),
-    })
-    return response.ok ? response.text() : null
-  } catch {
-    return null
+  // This older site index is absent from the published bucket; avoid an
+  // unnecessary timeout against a stale project-level origin on every render.
+  const origins = relativePath === 'sites.json' ? FAST2X_PUBLISHED_ORIGINS : publishOrigins
+  for (const origin of origins) {
+    try {
+      const response = await fetch(`${origin}/${relativePath}`, {
+        cache: 'no-store',
+        headers: { Accept: 'text/html, application/json;q=0.9, */*;q=0.8' },
+        signal: AbortSignal.timeout(8000),
+      })
+      if (response.ok) return response.text()
+    } catch {
+      // Try the next published-content origin before using the local mirror.
+    }
   }
+  return null
 }
 
 // Release 产物按 releaseId 不可变(sites.json/pages.json/片段一经发布不再变),

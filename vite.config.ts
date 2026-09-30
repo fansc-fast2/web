@@ -84,6 +84,6 @@ export default defineConfig({
   // (如 Vercel)可用它推导 published.css / blocks-renderer.js 的绝对地址,
   // 不必再单独配 VITE_PUBLISHED_CSS_URL 等构建期变量。
   define: {
-    __PUBLISHED_ORIGIN__: JSON.stringify((process.env.PUBLISHED_ORIGIN || '').replace(/\/+$/, '')),
+    __PUBLISHED_ORIGIN__: JSON.stringify('https://static.fast2x.com/sites'),
   },
 })
